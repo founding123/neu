@@ -223,9 +223,9 @@
     return e ? e.t : '';
   }
 
-  // 현재 문항 페이지 번호 = 파일명 neuroNNNN.html 에서 추출
+  // 현재 문항 페이지 번호 = 파일명 neuNNNN.html 에서 추출
   function currentPageNumber() {
-    var prefix = window.FILE_PREFIX || 'neuro';
+    var prefix = window.FILE_PREFIX || 'neu';
     var fname = (location.pathname.split('/').pop() || '');
     var m = fname.match(new RegExp('^' + prefix + '0*(\\d+)(?:\\.html?)?$', 'i'));
     return m ? parseInt(m[1], 10) : NaN;
@@ -251,7 +251,7 @@
      브랜딩(제목·강조어·라벨·태그라인)
      - 평문 대신 pages.js의 window.SITE_ENC(암호문)에 들어 있습니다.
      - 잠금 해제 후 세션에 passphrase가 있을 때만 복호화해서 채웁니다.
-     - passphrase가 없으면(잠긴 neuroNNNN 등) 비밀이 아닌 일반 문구로 대체합니다.
+     - passphrase가 없으면(잠긴 neuNNNN 등) 비밀이 아닌 일반 문구로 대체합니다.
      ============================================================ */
   function escHtml(s) {
     return String(s).replace(/[&<>]/g, function (c) {
@@ -272,7 +272,7 @@
     var title = site.title || '';
 
     // 문서 제목은 index에서만 사이트 제목으로 둡니다.
-    // (neuroNNNN 탭 제목은 그 페이지 자신의 <meta name="page-title">을 유지)
+    // (neuNNNN 탭 제목은 그 페이지 자신의 <meta name="page-title">을 유지)
     var page = document.body.getAttribute('data-lock-page');
     if (title && page === 'index') document.title = title;
 
@@ -299,12 +299,12 @@
     var tg = document.getElementById('site-tagline');
     if (tg && site.tagline) tg.textContent = site.tagline;
 
-    // neuroNNNN 상단/하단 돌아가기 띠
+    // neuNNNN 상단/하단 돌아가기 띠
     fillBackLink(title);
   }
 
   function applyFallbackBranding() {
-    // 잠금 상태에서 보이는 neuroNNNN 돌아가기 띠가 비지 않도록 하는 일반 문구
+    // 잠금 상태에서 보이는 neuNNNN 돌아가기 띠가 비지 않도록 하는 일반 문구
     fillBackLink('');
   }
 

@@ -27,7 +27,7 @@ function toggleAnswer(btn){const panel=btn.nextElementSibling;panel.classList.to
    - 문항이 없는 분류는 체크박스가 흐려지고 비활성화되며,
      패널 아래에 '추후 추가 예정' 안내가 뜬다. (QCAT.zeroTip/zeroNote)
    - 문항이 하나도 없는 강의는 안내 카드가 자동으로 표시된다.
-     (QCAT.emptyPage — 예전 neuroNONE.html 템플릿의 역할을 대신한다)
+     (QCAT.emptyPage — 예전 neuNONE.html 템플릿의 역할을 대신한다)
    - 체크 상태는 강의(파일 번호)별로 localStorage에 따로 저장된다.
      이때 분류 '이름'이 아니라 order에서의 '순번'으로 저장한다 —
      이름이 기기(localStorage)에 평문으로 남지 않게 하기 위해서다.
@@ -69,7 +69,7 @@ var QCAT = {
   zeroNote:     '흐린 분류는 아직 등록된 문항이 없습니다. 추후 추가될 예정입니다.', // 패널 아래 안내 한 줄
 
   // 문항이 하나도 없는 강의에서 자동으로 표시되는 안내 카드 문구
-  // (neuroNONE.html이 하던 일을 이제 모든 페이지가 스스로 한다)
+  // (neuNONE.html이 하던 일을 이제 모든 페이지가 스스로 한다)
   emptyPage: {
     num:  '문항 없음',
     stem: '이 강의에는 아직 등록된 문항이 없습니다.',
@@ -126,9 +126,9 @@ function toggleOracle(){ if (window.__sokCatToggle) window.__sokCatToggle(); }
     return true;
   }
 
-  // 저장 키 = 파일명 neuroNNNN.html의 번호 (번호를 못 읽으면 파일명)
+  // 저장 키 = 파일명 neuNNNN.html의 번호 (번호를 못 읽으면 파일명)
   function pageKey(){
-    var prefix = window.FILE_PREFIX || 'neuro';
+    var prefix = window.FILE_PREFIX || 'neu';
     var f = (location.pathname.split('/').pop() || '');
     var m = f.match(new RegExp('^' + prefix + '0*(\\d+)', 'i'));
     return m ? m[1] : (f || 'page');
@@ -186,9 +186,9 @@ function toggleOracle(){ if (window.__sokCatToggle) window.__sokCatToggle(); }
   }
 
   /* 문항이 하나도 없는 강의에서 보여줄 안내 카드.
-     예전에는 neuroNONE.html이라는 별도 템플릿이 이 카드를 손으로 담고
+     예전에는 neuNONE.html이라는 별도 템플릿이 이 카드를 손으로 담고
      있었지만, 이제 문항 카드가 0개면 여기서 자동으로 만들어 준다.
-     (옛 neuroNONE 기반 페이지처럼 페이로드에 직접 적어 둔 안내 카드가
+     (옛 neuNONE 기반 페이지처럼 페이로드에 직접 적어 둔 안내 카드가
       이미 있으면 — 선지도 data-cat도 없는 q-card — 중복 생성하지 않는다) */
   function ensureNoQuestionsCard(hasCards){
     var mine = dc.querySelector('.q-card.no-questions');
@@ -406,13 +406,13 @@ function toggleOracle(){ if (window.__sokCatToggle) window.__sokCatToggle(); }
   nav.style.display = 'none';   // 그릴 수 있을 때만 다시 켠다
 
   // 파일명 접두어 — pages.js의 window.FILE_PREFIX 한 곳에서 관리한다.
-  var FILE_PREFIX = window.FILE_PREFIX || 'neuro';
+  var FILE_PREFIX = window.FILE_PREFIX || 'neu';
 
   function pad4(n){ n = String(n); while (n.length < 4) n = '0' + n; return n; }
   function fileOf(num){ return FILE_PREFIX + pad4(num) + '.html'; }
   function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
 
-  // 현재 페이지 번호 = 파일명 neuroNNNN.html 에서 추출
+  // 현재 페이지 번호 = 파일명 neuNNNN.html 에서 추출
   var fname = (location.pathname.split('/').pop() || '');
   var mnum = fname.match(new RegExp('^' + FILE_PREFIX + '0*(\\d+)(?:\\.html?)?$', 'i'));
   var current = mnum ? parseInt(mnum[1], 10) : NaN;

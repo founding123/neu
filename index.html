@@ -424,7 +424,7 @@
       var buildSeq = 0;
 
       // 파일명 접두어 — pages.js의 window.FILE_PREFIX 한 곳에서 관리한다.
-      var FILE_PREFIX = window.FILE_PREFIX || 'neuro';
+      var FILE_PREFIX = window.FILE_PREFIX || 'neu';
 
       /* ── 교수별 묶기 설정 — 여기 세 줄만 고치면 된다 ──────────
          GROUP_ORDER : 'name'  교수 이름 가나다순
@@ -595,7 +595,7 @@
 
       /* ── 교수 한 줄 평 ─────────────────────────────────────
          pages.js의 PROF_NOTE_ENC = { "홍길동": "강의록을 다 읽어줌.", ... }
-         · 키는 neuro 파일에서 뽑아낸 교수 이름과 같아야 한다.
+         · 키는 neu 파일에서 뽑아낸 교수 이름과 같아야 한다.
            '홍길동.'처럼 마침표를 붙여 적어도 같은 규칙으로 맞춰 준다.
          · TOC_ENC와 같은 방식으로 암호화한다. 없으면 이름만 뜬다.
          · 세션당 1회만 복호화한다(유도 키는 unlock.js가 이미 캐시함). */
@@ -631,7 +631,7 @@
 
       /* ── 화면 상태 ─────────────────────────────────────────
          pagesData : [{n, file, name, ord}] — 항상 번호 오름차순
-         profMap   : {"100":"홍길동", ...}          번호 → 교수 (neuro 파일에서 추출)
+         profMap   : {"100":"홍길동", ...}          번호 → 교수 (neu 파일에서 추출)
          profNotes : {"홍길동":"강의록 다 읽어줌.", ...}  교수 → 한 줄 평 (pages.js에서 직접 작성)
          sortMode  : 'num' | 'prof' */
       var pagesData = [];
@@ -695,7 +695,7 @@
       function renderGrid(){
         syncToggle();
         if (!pagesData.length) {
-          grid.innerHTML = '<div class="empty"><code>neuroNNNN.html</code>(예: <code>neuro0100.html</code>) 이름으로 파일을 올리고, <code>pages.js</code>의 <code>TOC_ENC</code>에 <code>"번호": ["제목", "교수"]</code> 한 줄을 추가하면 여기에 나타납니다.</div>';
+          grid.innerHTML = '<div class="empty"><code>neuNNNN.html</code>(예: <code>neu0100.html</code>) 이름으로 파일을 올리고, <code>pages.js</code>의 <code>TOC_ENC</code>에 <code>"번호": ["제목", "교수"]</code> 한 줄을 추가하면 여기에 나타납니다.</div>';
           return;
         }
         grid.innerHTML = (sortMode === 'prof' && profMap) ? groupedHTML() : pagesData.map(cardHTML).join('');

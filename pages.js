@@ -11,8 +11,8 @@
      교수 이름이 TOC_ENC 안에 함께 있기 때문이다.
 
    ▣ 새 페이지 추가하는 법 (이제 두 단계뿐)
-     1) 파일을 neuroNNNN.html 이름으로 올린다.
-        예) neuro0100.html, neuro3050.html
+     1) 파일을 neuNNNN.html 이름으로 올린다.
+        예) neu0100.html, neu3050.html
      2) 아래 TOC_ENC에 한 줄을 추가한다.
         예) "3050": ["새 강의 제목", "홍길동"],
      끝. 목차·이전/다음 페이저·문항 페이지 h1·교수별 묶기가
@@ -44,7 +44,7 @@
 /* ▣ 사이트 문구
      title/highlight/eyebrow/tagline : 목차(index) 화면의 문구
      subject : 문항 페이지 상단의 작은 라벨(eyebrow) 기본값.
-               예전엔 모든 neuro 파일마다 "근골격학"을 반복해 적었지만,
+               예전엔 모든 neu 파일마다 "근골격학"을 반복해 적었지만,
                이제 여기 한 곳만 적으면 된다.
                (특정 페이지만 다르게 하려면 그 페이지 pageMetaPayload에
                 "eyebrow"를 적으면 그 값이 우선한다) */
@@ -100,4 +100,4 @@ window.PROF_NOTE_ENC =
 // 파일명 접두어 — index.html과 assets/question_set.js가 이 값을 읽는다.
 // 파일명 규칙이 바뀌면 여기 한 곳만 고친다.
 
-window.FILE_PREFIX = 'neuro';
+window.FILE_PREFIX = 'neu';
